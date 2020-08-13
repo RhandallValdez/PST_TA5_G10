@@ -1,13 +1,10 @@
 package com.example.amst10;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -26,7 +23,7 @@ public class splashInicio extends Activity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent intent = new Intent(splashInicio.this,MainActivity.class);
+                Intent intent = new Intent(splashInicio.this, Inicio.class);
                 startActivity(intent);
                 finish();
             }

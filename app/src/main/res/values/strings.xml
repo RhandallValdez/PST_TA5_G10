@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AMST10</string>
+    <string name="categoria1">Ciencia Ficcion</string>
+    <string name="categoria2">Terror/Horror</string>
+    <string name="categoria3">Romance/Drama</string>
+    <string name="categoria4">Aventura</string>
 </resources>
