@@ -24,7 +24,7 @@ public class BookListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
-        //profile();
+
         BottomNavigationView BottomNavView= (BottomNavigationView)findViewById(R.id.navigationView);
         BottomNavView.setOnNavigationItemSelectedListener((navListener));
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment,new ListFragment()).commit();
@@ -57,23 +57,7 @@ public class BookListActivity extends AppCompatActivity {
     public void profile(View v){
 
     }
-public void profile(){
-        TextView edNombre,edApellido,edCelular,edCorreo,edCategoria,edUsuario;
 
-    edNombre = findViewById(R.id.mostrarNombre);
-    edApellido = findViewById(R.id.mostrarApellido);
-    edCelular = findViewById(R.id.mostrarCelular);
-    edCorreo = findViewById(R.id.mostrarCorreo);
-    edCategoria = findViewById(R.id.mostrarFavorito);
-    edUsuario = findViewById(R.id.mostrarNombreUsuario);
-
-    edNombre.setText(UsuarioActual.getUser().getNombres());
-    edApellido.setText(UsuarioActual.getUser().getApellidos());
-    edCelular.setText(UsuarioActual.getUser().getCelular());
-    edCorreo.setText(UsuarioActual.getUser().getCorreo());
-    edCategoria.setText(UsuarioActual.getUser().getCategoriaFavorita());
-    edUsuario.setText(UsuarioActual.getUser().getNomUsuario());
-}
 
 public void category(){
 
