@@ -12,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="300dp"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425" />
 
     <EditText
         android:id="@+id/ContraInicio"
@@ -29,8 +30,10 @@
         android:hint="Contraseña"
         android:inputType="textPersonName"
         android:password="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuarioInicio" />
+        app:layout_constraintTop_toBottomOf="@+id/usuarioInicio"
+        app:layout_constraintVertical_bias="0.106" />
 
     <Button
         android:id="@+id/button"
@@ -41,22 +44,24 @@
         android:onClick="irRegistro"
         android:text="Registrar"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.062" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="98dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="71dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
         android:background="#FB6A5C"
         android:onClick="ingresar"
         android:text="Ingresar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ContraInicio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
