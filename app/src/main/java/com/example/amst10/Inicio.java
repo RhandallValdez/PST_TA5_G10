@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 public class Inicio extends AppCompatActivity {
@@ -23,23 +25,37 @@ public class Inicio extends AppCompatActivity {
     }
     public void ingresar(View v){
         String[] resultado;
+        String nomUs = etUser.getText().toString();
+        String contra = etContra.getText().toString();
+        if(nomUs.isEmpty() || contra.isEmpty()){
+            Toast.makeText(Inicio.this, "Ingrese informacion solicitada.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         try {
             String[] datos = new String[]{
                     "login",
                     login,
-                    etUser.getText().toString(),
-                    etContra.getText().toString()
+                    nomUs,
+                    contra
             };
             AsyncQuery async = new AsyncQuery();
             resultado = async.execute(datos).get();
-            System.out.println(resultado[0]);
-            String[] info = resultado[0].split(",");
-            if (info[0].equals("denegado")){
+            String resultadoTabla = resultado[0].trim();
+            String[] myData= resultadoTabla.split("\\n");
+            ArrayList<String> infoImp = new ArrayList<>();
+            for(int i=0;i<myData.length;i++){
+                if(i==0){
+                String[] filaStrings = myData[i].split(",");
+                ArrayList<String> fila = new ArrayList<String>(Arrays.asList(filaStrings));
+                infoImp=fila;}
+            }
+            System.out.println(infoImp.get(1));
+            if (infoImp.get(0).equals("denegado")){
                 Toast.makeText(Inicio.this, "Usuario no registrado o datos ingresados incorrectos.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            actUsuario = new UsuarioActual(info[1], info[2],info[4],info[3],info[5],info[6]);
-            System.out.println(info[1]+info[2]+info[3]);
+            actUsuario = new UsuarioActual(infoImp.get(1), infoImp.get(2),infoImp.get(4),infoImp.get(3),infoImp.get(5),infoImp.get(6));
+
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

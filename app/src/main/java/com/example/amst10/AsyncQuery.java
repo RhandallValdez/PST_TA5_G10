@@ -29,14 +29,12 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoInput(true);
+                httpURLConnection.setDoOutput(true);
 
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String mandarUsuario = URLEncoder.encode("usuarioIngresado","UTF-8")+"="+URLEncoder.encode(usuarioIngresado,"UTF-8");
-                bufferedWriter.write(mandarUsuario);
-                bufferedWriter.write("&");
-                String mandarContra = URLEncoder.encode("contraIngresada","UTF-8")+"="+URLEncoder.encode(contraIngresada,"UTF-8");
-                bufferedWriter.write(mandarContra);
+                String post_data = URLEncoder.encode("usuarioIngresado", "UTF-8")+"="+URLEncoder.encode(usuarioIngresado, "UTF-8")+"&"+URLEncoder.encode("contraIngresada", "UTF-8")+"="+URLEncoder.encode(contraIngresada, "UTF-8");
+                bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
@@ -46,7 +44,6 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 BufferedReader bR = new BufferedReader(new InputStreamReader(iStr,"UTF-8"));
                 String resultado="";
                 String line="";
-                String infoObtenida = resultado.split("\n")[0];
 
                 while((line = bR.readLine()) != null){
                     resultado += line + System.getProperty("line.separator") ;
@@ -56,7 +53,7 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 httpURLConnection.disconnect();
 
                 totalResultadoSQL = new String[]{
-                        infoObtenida
+                        resultado
                 };
 
             } catch (MalformedURLException e ) {
@@ -65,11 +62,17 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 e.printStackTrace();
             }
         }
-        else if(type.equals("query")){
+        else if(type.equals("registrar")){
             try {
-                String tabla = datos[0][2];
-                String condicion = datos[0][3];
-                String SQL = tabla+","+condicion;
+                String nombre = datos[0][2];
+                String apellido = datos[0][3];
+                String correo = datos[0][4];
+                String celular = datos[0][5];
+                String categoria = datos[0][6];
+                String usuario = datos[0][7];
+                String contrasena = datos[0][8];
+                String SQL = nombre+","+apellido+","+correo+","+celular+","+categoria+","+usuario+","+contrasena;
+                System.out.println(SQL);
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -83,22 +86,6 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
-
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
-                String resultado="";
-                String line="";
-
-                while((line = bufferedReader.readLine()) != null){
-                    resultado += line + System.getProperty("line.separator");
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-
-                totalResultadoSQL = new String[]{
-                        resultado
-                };
 
             } catch (MalformedURLException e ) {
                 e.printStackTrace();
