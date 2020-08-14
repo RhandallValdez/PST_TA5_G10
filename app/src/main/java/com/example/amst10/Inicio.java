@@ -15,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 public class Inicio extends AppCompatActivity {
     private EditText etUser,etContra;
     String login = "https://lab6-guzman.000webhostapp.com/login.php";
-    UsuarioActual actUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +53,12 @@ public class Inicio extends AppCompatActivity {
                 Toast.makeText(Inicio.this, "Usuario no registrado o datos ingresados incorrectos.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            actUsuario = new UsuarioActual(infoImp.get(1), infoImp.get(2),infoImp.get(4),infoImp.get(3),infoImp.get(5),infoImp.get(6));
+            UsuarioActual actUsuario = new UsuarioActual(infoImp.get(1), infoImp.get(2),infoImp.get(4),infoImp.get(3),infoImp.get(5),infoImp.get(6));
+            UsuarioActual.setUser(actUsuario);
             Intent intent=new Intent(this,BookListActivity.class);
             intent.putExtra("usuario",actUsuario);
             startActivity(intent);
+            finish();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
