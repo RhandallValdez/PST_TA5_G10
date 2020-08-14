@@ -1,6 +1,8 @@
 package com.example.amst10;
 
-public class UsuarioActual {
+import java.io.Serializable;
+
+public class UsuarioActual implements Serializable {
     private String nombres,apellidos,celular,correo,categoriaFavorita,nomUsuario;
 
     public UsuarioActual(String nombres, String apellidos, String celular, String correo, String categoriaFavorita, String nomUsuario) {

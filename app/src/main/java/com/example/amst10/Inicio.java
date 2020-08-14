@@ -55,12 +55,16 @@ public class Inicio extends AppCompatActivity {
                 return;
             }
             actUsuario = new UsuarioActual(infoImp.get(1), infoImp.get(2),infoImp.get(4),infoImp.get(3),infoImp.get(5),infoImp.get(6));
-
+            Intent intent=new Intent(this,BookListActivity.class);
+            intent.putExtra("usuario",actUsuario);
+            startActivity(intent);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
 
     }
     public void irRegistro(View v){
