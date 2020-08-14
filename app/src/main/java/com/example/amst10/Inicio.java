@@ -48,13 +48,14 @@ public class Inicio extends AppCompatActivity {
                 ArrayList<String> fila = new ArrayList<String>(Arrays.asList(filaStrings));
                 infoImp=fila;}
             }
-            System.out.println(infoImp.get(1));
+
             if (infoImp.get(0).equals("denegado")){
                 Toast.makeText(Inicio.this, "Usuario no registrado o datos ingresados incorrectos.", Toast.LENGTH_SHORT).show();
                 return;
             }
             UsuarioActual actUsuario = new UsuarioActual(infoImp.get(1), infoImp.get(2),infoImp.get(4),infoImp.get(3),infoImp.get(5),infoImp.get(6));
             UsuarioActual.setUser(actUsuario);
+
             Intent intent=new Intent(this,BookListActivity.class);
 
             startActivity(intent);

@@ -24,7 +24,7 @@ public class BookListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
-        profile();
+        //profile();
         BottomNavigationView BottomNavView= (BottomNavigationView)findViewById(R.id.navigationView);
         BottomNavView.setOnNavigationItemSelectedListener((navListener));
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment,new ListFragment()).commit();
