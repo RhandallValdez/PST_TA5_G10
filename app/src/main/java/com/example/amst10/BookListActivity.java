@@ -30,6 +30,7 @@ public class BookListActivity extends AppCompatActivity {
 
         BottomNavigationView BottomNavView= (BottomNavigationView)findViewById(R.id.navigationView);
         BottomNavView.setOnNavigationItemSelectedListener((navListener));
+
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment,new BookListFragment(this)).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener=new BottomNavigationView.OnNavigationItemSelectedListener(){

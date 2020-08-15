@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.amst10.ui.DialogBoxBook;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> implements Filterable {
     private ArrayList<Book> items;
     public Context context;
     private Activity activity;
@@ -58,6 +61,51 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public int getItemCount() {
         return items.size();
     }
+public Filter getFilter(){
+        return filter;
+}
+private Filter filter=new Filter() {
+    @Override
+    protected FilterResults performFiltering(CharSequence charSequence) {
+        List<Book> filteredBooks;
+        if (charSequence==null || charSequence.length()==0){
+            filteredBooks=allBooks();
+        }else if(charSequence.charAt(0)=='-'){
+            String cat=charSequence.toString().substring(1,charSequence.length()-1).toLowerCase().trim();
+            filteredBooks=categoryBooks(cat);
+
+        }
+
+
+        else{
+            String filterPatern=charSequence.toString().toLowerCase().trim();
+            filteredBooks=containsBook(filterPatern);
+        }
+        FilterResults results =new FilterResults();
+        results.values=filteredBooks;
+        return results;
+    }
+
+    @Override
+    protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+        items.clear();
+        items.addAll((List)filterResults.values);
+    }
+};
+private List<Book> allBooks(){
+
+        return null;
+}
+private List<Book> containsBook(String s){
+
+        return null;
+}
+private List<Book> categoryBooks(String s){
+
+    return null;
+}
+
+
 
 
 
