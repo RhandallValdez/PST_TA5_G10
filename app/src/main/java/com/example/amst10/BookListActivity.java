@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 import androidx.navigation.NavController;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,23 +19,25 @@ import java.util.ArrayList;
 
 public class BookListActivity extends AppCompatActivity {
     private ArrayList<Book> books;
+    private Activity activity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
+        activity=this;
 
         BottomNavigationView BottomNavView= (BottomNavigationView)findViewById(R.id.navigationView);
         BottomNavView.setOnNavigationItemSelectedListener((navListener));
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment,new ListFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment,new BookListFragment(this)).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener=new BottomNavigationView.OnNavigationItemSelectedListener(){
         public boolean onNavigationItemSelected(@NonNull MenuItem item){
            Fragment selected=null;
            switch(item.getItemId()){
                case R.id.homeButton:
-                   selected=new BookListFragment();
+                   selected=new BookListFragment(activity);
                    break;
                case R.id.menuButton:
                    selected=new categoryFragment();

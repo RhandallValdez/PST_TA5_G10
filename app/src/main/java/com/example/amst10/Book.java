@@ -7,12 +7,14 @@ public class Book {
     private String author;
     private String editorial;
     private String title;
+    private String description;
 
-    public Book(String imageURL, String author, String editorial,String title) {
+    public Book(String imageURL, String author, String editorial,String title, String description) {
         this.imageURL = imageURL;
         this.author = author;
         this.editorial = editorial;
         this.title =title;
+        this. description=description;
     }
 
     public String getAuthor() {
@@ -31,5 +33,7 @@ public class Book {
         return title;
     }
 
-
+    public String getDescription() {
+        return description;
+    }
 }
