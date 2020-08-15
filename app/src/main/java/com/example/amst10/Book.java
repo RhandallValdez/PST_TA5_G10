@@ -2,7 +2,9 @@ package com.example.amst10;
 
 import android.widget.ImageView;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private String imageURL;
     private String author;
     private String editorial;
