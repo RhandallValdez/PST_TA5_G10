@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class BookListFragment extends Fragment {
     private  Activity activity;
     public BookListFragment(Activity activity){
+       super();
         this.activity=activity;
+    }
+    public BookListFragment(){
+        super();
     }
 
     @Nullable
