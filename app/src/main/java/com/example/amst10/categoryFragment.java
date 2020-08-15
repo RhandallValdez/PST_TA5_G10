@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 
 public class categoryFragment extends Fragment {
-    String login = "https://lab6-guzman.000webhostapp.com/login.php";
+    String login = "https://lab6-guzman.000webhostapp.com/libros.php";
 
     @Nullable
     @Override
@@ -39,9 +39,6 @@ public class categoryFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this, BookListCategory.class);
-        i.putExtra("libros",resultado);
-        startActivity(i);
     }
     public void catCiencia(View view){
         String[] resultado = null;
@@ -59,9 +56,6 @@ public class categoryFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this,BookListCatergory.class);
-        i.putExtra("libros",resultado);
-        startActivity(i);
     }
     public void catTerror(View view){
         String[] resultado = null;
@@ -79,9 +73,6 @@ public class categoryFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this,BookListCatergory.class);
-        i.putExtra("libros",resultado);
-        startActivity(i);
     }
     public void catDrama(View view){
         String[] resultado = null;
@@ -99,9 +90,7 @@ public class categoryFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this,BookListCatergory.class);
-        i.putExtra("libros",resultado);
-        startActivity(i);
+
     }
 
 }

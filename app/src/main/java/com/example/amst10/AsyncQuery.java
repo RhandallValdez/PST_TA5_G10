@@ -87,6 +87,24 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 bufferedWriter.close();
                 outputStream.close();
 
+                InputStream iStr = httpURLConnection.getInputStream();
+                BufferedReader bR = new BufferedReader(new InputStreamReader(iStr,"UTF-8"));
+                String resultado="";
+                String line="";
+
+                while((line = bR.readLine()) != null){
+                    resultado += line + System.getProperty("line.separator") ;
+                }
+                bR.close();
+                iStr.close();
+                httpURLConnection.disconnect();
+
+                totalResultadoSQL = new String[]{
+                        resultado
+                };
+
+                httpURLConnection.disconnect();
+
             } catch (MalformedURLException e ) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -112,6 +130,9 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
+
+
+                httpURLConnection.disconnect();//se te olvido desconectar la conexion a internet
 
             } catch (MalformedURLException e ) {
                 e.printStackTrace();

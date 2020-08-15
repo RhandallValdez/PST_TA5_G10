@@ -8,13 +8,19 @@ public class Book {
     private String editorial;
     private String title;
     private String description;
+    private String categoria;
 
-    public Book(String imageURL, String author, String editorial,String title, String description) {
+    public Book(String imageURL, String author, String editorial,String title, String description,String categoria) {
         this.imageURL = imageURL;
         this.author = author;
         this.editorial = editorial;
         this.title =title;
         this. description=description;
+        this.categoria = categoria;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 
     public String getAuthor() {

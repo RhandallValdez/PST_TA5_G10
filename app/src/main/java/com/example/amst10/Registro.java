@@ -31,7 +31,7 @@ public class Registro extends AppCompatActivity {
         edcategoria = findViewById(R.id.categoria);
     }
 
-    public void registrarse(View v){
+    public void registrarse(View v) {
         String nombre = edNombre.getText().toString();
         String apellido = edApellido.getText().toString();
         String correo = edCorreo.getText().toString();
@@ -51,7 +51,13 @@ public class Registro extends AppCompatActivity {
                 contrasena
         };
         AsyncQuery async = new AsyncQuery();
-        async.execute(datos);
+        try {
+            String[] resultado= async.execute(datos).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         finish();
     }
 }
