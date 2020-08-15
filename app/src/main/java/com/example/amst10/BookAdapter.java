@@ -43,9 +43,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
 
         items.get(position).setImageView( holder.itemImage);
-        holder.title.setText(R.string.titulo+ items.get(position).getTitle());
-        holder.author.setText(R.string.autor+items.get(position).getAuthor());
-        holder.editorial.setText(R.string.editorial+items.get(position).getEditorial());
+        holder.title.setText(activity.getResources().getString(R.string.titulo)+ items.get(position).getTitle());
+        holder.author.setText(activity.getResources().getString(R.string.autor)+items.get(position).getAuthor());
+        holder.editorial.setText(activity.getResources().getString(R.string.editorial)+items.get(position).getEditorial());
 
         final DialogBoxBook dbb= new DialogBoxBook(activity,items.get(position) );
         holder.cl.setOnClickListener(new View.OnClickListener(){

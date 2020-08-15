@@ -27,7 +27,7 @@ public class BookListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
         activity=this;
-
+        BookListFragment.addBooks();
         BottomNavigationView BottomNavView= (BottomNavigationView)findViewById(R.id.navigationView);
         BottomNavView.setOnNavigationItemSelectedListener((navListener));
 

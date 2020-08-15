@@ -36,6 +36,7 @@ public class BookListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView;
+
         View v= inflater.inflate(R.layout.fragment_list,container,false);
        final BookAdapter adapter=new BookAdapter(getContext(),items,activity);//items es el arrayList
 
@@ -53,7 +54,9 @@ public class BookListFragment extends Fragment {
                 return true;
             }
         });
-
+        recyclerView=v.findViewById(R.id.listBooks);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         return v;
 
     }
