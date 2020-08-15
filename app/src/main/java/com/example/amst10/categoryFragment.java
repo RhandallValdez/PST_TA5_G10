@@ -28,8 +28,8 @@ public class categoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
 
-        Button btnOpen = (Button) view.findViewById(R.id.btnOpen);
-        btnOpen.setOnClickListener(new View.OnClickListener() {
+        Button btnCiencia = (Button) view.findViewById(R.id.btnCiencia);
+        btnCiencia.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -45,8 +45,8 @@ public class categoryFragment extends Fragment {
             }
 
         });
-        Button btnCiencia = (Button) view.findViewById(R.id.btnCiencia);
-        btnCiencia.setOnClickListener(new View.OnClickListener() {
+        Button btnTerror = (Button) view.findViewById(R.id.btnTerror);
+        btnTerror.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -79,8 +79,8 @@ public class categoryFragment extends Fragment {
             }
 
         });
-        Button btnTerror = (Button) view.findViewById(R.id.btnTerror);
-        btnTerror.setOnClickListener(new View.OnClickListener() {
+        Button btnOpen = (Button) view.findViewById(R.id.btnOpen);
+        btnOpen.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

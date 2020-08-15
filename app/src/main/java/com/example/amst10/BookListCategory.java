@@ -11,6 +11,7 @@ import android.widget.SearchView;
 import java.util.ArrayList;
 
 public class BookListCategory extends AppCompatActivity {
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,27 +21,11 @@ public class BookListCategory extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         ArrayList <Book> items ;
         items = (ArrayList<Book>) bundle.getSerializable("categoria");
-        RecyclerView recyclerView;
-        View v= View.inflate(this,R.layout.activity_book_list_category,false);
+        
         final BookAdapter adapter=new BookAdapter(this,items,this);//items es el arrayList
-
-
-        SearchView sv=v.findViewById(R.id.searchBooks);
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
-                return true;
-            }
-        });
-        recyclerView=v.findViewById(R.id.listBooksC);
+        recyclerView = (RecyclerView) findViewById(R.id.listBooksC);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        return v;
+
     }
 }
