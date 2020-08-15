@@ -93,6 +93,32 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 e.printStackTrace();
             }
         }
+        else if(type.equals("categoria")){
+            try {
+                String categoria = datos[0][2];
+
+                String SQL = categoria;
+                System.out.println(SQL);
+                URL url = new URL(login_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String tablaPost = URLEncoder.encode("SQL","UTF-8")+"="+URLEncoder.encode(SQL,"UTF-8");
+                bufferedWriter.write(tablaPost);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+            } catch (MalformedURLException e ) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         return totalResultadoSQL;
 
