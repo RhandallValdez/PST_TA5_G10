@@ -1,5 +1,6 @@
 package com.example.amst10;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class profileFragment extends Fragment {
         return v;
 
     }
+
 
 
 }

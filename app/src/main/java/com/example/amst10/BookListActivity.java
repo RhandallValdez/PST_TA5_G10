@@ -51,6 +51,11 @@ public class BookListActivity extends AppCompatActivity {
            return true;
         }
     };
+    public void cerrarSesion(View v){
+        Intent intent = new Intent(this, splashInicio.class);
+        startActivity(intent);
+        finish();
+    }
 
     public ArrayList<Book> loadBooks(){
 
