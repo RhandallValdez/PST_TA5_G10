@@ -11,13 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.amst10.ui.DialogBoxBook;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> implements Filterable {
     private ArrayList<Book> items;
@@ -93,12 +97,24 @@ private Filter filter=new Filter() {
     }
 };
 private List<Book> allBooks(){
-
-        return null;
+    items.clear();
+    BookListFragment.addBooks();
+    List<Book> libros = BookListFragment.items;
+    return libros;
 }
 private List<Book> containsBook(String s){
+    items.clear();
+    BookListFragment.addBooks();
+    List<Book> libros = BookListFragment.items;
+    List<Book> seleccionados = new ArrayList<>();
+    for (Book libro: libros) {
+        if(libro.getTitle().toLowerCase().equals(s.toLowerCase())){
+            seleccionados.add(libro);
+            System.out.println(libro.getTitle());
+        }
 
-        return null;
+    }
+    return seleccionados;
 }
 private List<Book> categoryBooks(String s){
 
