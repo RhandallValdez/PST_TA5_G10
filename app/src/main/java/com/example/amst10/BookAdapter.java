@@ -74,10 +74,6 @@ private Filter filter=new Filter() {
         List<Book> filteredBooks;
         if (charSequence==null || charSequence.length()==0){
             filteredBooks=allBooks();
-        }else if(charSequence.charAt(0)=='-'){
-            String cat=charSequence.toString().substring(1,charSequence.length()-1).toLowerCase().trim();
-            filteredBooks=categoryBooks(cat);
-
         }
 
 
@@ -108,18 +104,15 @@ private List<Book> containsBook(String s){
     List<Book> libros = BookListFragment.items;
     List<Book> seleccionados = new ArrayList<>();
     for (Book libro: libros) {
-        if(libro.getTitle().toLowerCase().equals(s.toLowerCase())){
+        if(libro.getTitle().toLowerCase().contains(s.toLowerCase())){
             seleccionados.add(libro);
-            System.out.println(libro.getTitle());
+
         }
 
     }
     return seleccionados;
 }
-private List<Book> categoryBooks(String s){
 
-    return null;
-}
 
 
 
